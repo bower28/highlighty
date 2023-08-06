@@ -44,6 +44,10 @@
   outline-color: #bb0000;
 }
 
+button.delete {
+  margin-left: 10px;
+}
+
 /* Phrase & URL lists */
 
 #PhraseList--invisible,

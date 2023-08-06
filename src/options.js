@@ -66,6 +66,7 @@ $(function () {
 
   function setupKeyboardShortcutHandler(savedShortcut) {
     const keyboardShortcutInput = $('#Settings__keyboardShortcut');
+    const stopRecordingButton = document.getElementById('stopRecordingButton');
 
     function updateShortcutInput(shortcutString) {
       keyboardShortcutInput.val(shortcutString);
@@ -76,6 +77,11 @@ $(function () {
       document.getElementById('Settings__keyboardShortcut').setAttribute('data-recording', 'false');
       document.removeEventListener('keydown', handleKeyDown);
     }
+
+    stopRecordingButton.addEventListener('click', () => {
+      updateShortcutInput('');
+      keyboardShortcutInput.blur();
+    });
 
     $(document).ready(() => {
       updateShortcutInput(savedShortcut);
@@ -96,8 +102,8 @@ $(function () {
         return;
       }
       if (e.key === 'Escape') {
-        keyboardShortcutInput.blur();
         updateShortcutInput('');
+        keyboardShortcutInput.blur();
         return;
       }
       const specialKeys = {
